@@ -7,18 +7,81 @@
     <title>Difference between const let and var in javascript</title>
 </head>
 <body>
-    <!--difference between const let and var in javascript-->
-    <Button onclick="hihi()">ckick me</Button>
-    <script>
-        
-        function hihi(){
+    <!--difference between const let and var in javascript - document: https://www.tutorialspoint.com/es6/es6_variables.htm -->
+    <!-- trong JS bình thường có const(hằng) và var(biến) - phạm vi gồm có: global variable( biến toàn cục) và local variable (biến cục bộ) -->
+    <!--JS thì muốn viết sao viết nên nó đưa ra 1 chuẩn để người khác dễ tiếp cận là ES6 (hiện tại có ES7, TypeScript ...) -->
+    <!-- sự khác nhau của khai báo biến const - var - let trong javascript (chủ yếu mình sét ở mức độ phạm vi)-->
+
+    <!-- 1. const : khai báo 1 hằng số -->
+    
+        <!--
+        <script>
+            // khai báo và chạy F12 -> tab console
+            const ex = "hihi";
+            console.log(ex);
+            // khi change value của hằng số -> chắc chắn bị lỗi. (Assignment to constant variable)
+            ex = "hoho";
+            console.log(ex);
+            // kết luận là hằng số là không đổi.
+        </script>
+        -->
+    <!-- end 1.-->
+
+    <!-- 2. var và let -->
+        <script>
+            //vd 1: 
+            const flag = true; //global
+            /*
+            if(flag){
+                var a = "var";
+                let b = "let";
+            }
+            console.log(a); //normal
+            console.log(b); //error -> (b is not defined) nhận xét: biến b chỉ sử dụng trong khối {} (Block-Scoped) 
+                            //ở ngoài {} thì không sử dụng đc. ta kiểm tra thử trong {} let sử dung đc hay không.
+                            */
+            //vd2: kiểm tra 
+            if(flag){
+                var aa = "var";
+                let bb = "let";
+                console.log(aa); //cả 2 đều có giá trị
+                console.log(bb); // nhận xét: thằng let chỉ dùng được trong khối lệnh - tức chỉ dùng trong phạm vi {} (Block_Scoped)
+                                    // bh test tiếp biến khai báo var.
+            }
+            //vd3: tao khai báo i kiểu let hoặc var để nhận xét
+            const arr = ["a","b","c","d"];
+            for(var /*let*/ i = 0; i< arr.length; i++){
+                console.log("trong for", i);
+            }
+            console.log("ngoài for", i);
             
-            let b = 2;
-            return b;
-        }
-        console.log(hihi());
-        
-        
-    </script>
+            //vd 4: 
+            var aaa = "aaaa";
+            let bbb = "bbbb";
+            const cst = "cccc"
+            function test(){
+                aaa = "hihi";
+                bbb = "haha";
+                return aaa +" "+ bbb +" "+ cst;
+            }
+            console.log(test()); // nhận xét: khi khai báo toàn thì function gọi đc các biến đó. nhưng thay đổi giá trị thì chỉ có var và let.
+            //vd5: viết hàm swap
+            var a = 1;
+            var b = 5;
+            
+            if(a < b)
+            {
+                
+                var /*let*/ tmp = a;
+                a = b;
+                b = tmp;
+            }
+            console.log("a = ", a);
+            console.log("b = ", b);
+            console.log("tmp = ", tmp); // xem thử biến tmp; khi var tmp hoặc let tmp. nên dùng let cho tmp 
+                                        // sau này cứ biến tạm hoặc biến khai báo trong {} ở toàn cục không dùng đến cứ khai báo let
+                                        // dùng var không sai nhưng viết vậy cho chuẩn 
+        </script>
+    <!-- end 2. -->
 </body>
 </html>
