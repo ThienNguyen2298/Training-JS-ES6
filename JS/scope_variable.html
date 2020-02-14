@@ -27,7 +27,7 @@
         -->
     <!-- end 1.-->
 
-    <!-- 2. var và let -->
+    <!-- 2. var và let - function scope và block scope -->
         <script>
             //vd 1: 
             const flag = true; //global
@@ -36,9 +36,11 @@
                 var a = "var";
                 let b = "let";
             }
-            console.log(a); //normal
+            console.log(a); //normal -> mặc dù biến b không khai báo ở global nhưng cách sử dụng nó như global bởi nó chỉ bị giới hạn bởi
+                            // khi khai báo var trong function còn {} của if() không phải function.
             console.log(b); //error -> (b is not defined) nhận xét: biến b chỉ sử dụng trong khối {} (Block-Scoped) 
                             //ở ngoài {} thì không sử dụng đc. ta kiểm tra thử trong {} let sử dung đc hay không.
+                            //Một block là một khối được định nghĩa trong cặp ngoặc nhọn {}, nó được tạo ra bởi các câu lệnh như if, for, while.
                             */
             //vd2: kiểm tra 
             if(flag){
@@ -47,6 +49,11 @@
                 console.log(aa); //cả 2 đều có giá trị
                 console.log(bb); // nhận xét: thằng let chỉ dùng được trong khối lệnh - tức chỉ dùng trong phạm vi {} (Block_Scoped)
                                     // bh test tiếp biến khai báo var.
+            }
+            //nếu khai báo biến var trong một function, thì nó sẽ không hoạt động bên ngoài hàm đó. (function scope)
+            function setA(){
+                var bienA = 100;
+                console.log(bienA);
             }
             //vd3: tao khai báo i kiểu let hoặc var để nhận xét
             const arr = ["a","b","c","d"];
@@ -81,7 +88,17 @@
             console.log("tmp = ", tmp); // xem thử biến tmp; khi var tmp hoặc let tmp. nên dùng let cho tmp 
                                         // sau này cứ biến tạm hoặc biến khai báo trong {} ở toàn cục không dùng đến cứ khai báo let
                                         // dùng var không sai nhưng viết vậy cho chuẩn 
+            
+            
+            
         </script>
     <!-- end 2. -->
+    <!-- Kết luận chung -->
+    <!--
+        var bị giới hạn bởi function scope. (khai báo var trong function, ở ngoài gọi ko đc)
+        let và const bị giới hạn bởi cả block scope và function scope.
+        Function scope là phạm vi hoạt động nằm trong function.
+        Block scope là phạm vi hoạt đông nằm trong một cặp ngoặc nhọn được tạo ra bởi if, for, while.
+    -->
 </body>
 </html>
