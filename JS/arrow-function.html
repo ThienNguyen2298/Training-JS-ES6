@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow Function - Hàm rút gọn</title>
+</head>
+<body>
+    <script>
+        // Arrow Funtion: (Hàm rút gọn) một trong những tính năng mới của ES6.
+        // document: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions
+        // https://techtalk.vn/ecmascript-es6-la-gi-overview-ve-es6.html. mình sẽ xem tài liệu tiếng việt ở đây để test các trường hợp ở đấy
+        // và nhận xét.
+        // đầu tiên tìm hiểu về các cách khai báo 1 function .
+        // cách 1: 
+        /*
+            function func1(){
+                // statement
+            }
+            cách 2: gọi function thông qua biến 
+        */
+            //vd:
+            function func1(){
+                
+                return "hihi"; // ta thử return thì sẽ ko sao. ok
+
+            }// tại sao lại có 2 giá trị là hhihi và undefined // tức là function trong js mặc định trả về là undefined trong trường
+            // hợp hàm ở trên ko return.
+            // vd2:
+            var func2 = function(){
+                return "hihi";
+            } // thì đây là 2 cách khai báo function thì ES6 có thêm tính năng Arrow function để viết hàm rút gọn.
+            // arrow function
+            var arrFunc1 = () =>{
+                return "haha";
+            }// nhận xét thì ko còn thấy key word function thay vào đó là thêm dấu => . ta xem tiếp tài liệu
+            // vd có truyền tham số ha.
+            var arrFuncSum = (num1, num2) => {
+                return num1 + num2;
+            }
+            // trong trường hợp là hàm chỉ có 1 lệnh thì ta có thể viết arrow function ntn.
+            var arrFuncPrint = tet => console.log(tet);// nhầm chỉ 1 lệnh và chỉ 1 đối số, ở đây ta nhận 2 đối số nên sử
+            // dụng ko đc. nếu 1 đối số, tao ko cần dùng dấu () vậy là phải dùng dấu {}
+            // kết luận: 1 đối thì ko cần () hàm có trả về thì phải có {} nếu hàm ko trả về thì ko cần {}.
+            // bây giờ ta sẽ test phần note của tài liệu xem sao.
+            //const test1 = (x, y)
+            //=>{
+            //    return x + y;
+            //}// nhận xét ta chú dấu => ha, nó phải nằm cùng dòng vs khai báo.
+            // trường hiowpj 2 đối số bỏ {} không bị lỗi.
+            const test2 = (num1, num2 ) => num1 + num2;
+            // dấu => ko nằm cùng dòng khai báo kiểu thì để ko sai ta viết như sau:
+            const test3 = (
+                num1, num2
+            ) => num1 + num2;
+            /*
+            nhận xét chung thì: có 2 cách khai báo hàm: function(){} và var a = function(){}
+            thì ES6 có tính năng arrow function để viết thằng var a = function() gọn hơn là var a = () => {};
+            //và trong 1 số trường hợp ta viết gọn nó hơn nữa là:
+            câu lệnh đơn bên trong hàm: thì ko cần dấu {}
+            var a = (variable) => console.log(variable);
+            tiếp là: chỉ 1 đối số: thì ko cần dấu ()
+            var a = variable => console.log(variable);
+            còn đối với return thì: ko cần return chỉ => value.
+            var a = variable => variable;
+                        */
+                        var a = variable => variable;
+            /*
+            còn cái cuối là nên bỏ => trên cùng khai báo với const var let của hàm.
+            */            
+    </script>
+</body>
+</html>
