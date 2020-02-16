@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rest Parameter</title>
+</head>
+<body>
+    <script>
+        // Rest parameter . khi khái báo 1 hàm với tham số ko xác định thì ta dùng rest parameter, giống vs từ khóa params trong C#
+        //syntax rest parameter:
+            function Rparam1(var1, var2, ...other){
+                console.log("var1: ", var1);
+                console.log("var2: ", var2);
+                console.log("other: ", other);
+                console.log("arguments",arguments);
+                //ép từ arguments object sang array
+                console.log(Array.prototype.slice.call(arguments));
+                // ép sang array sử dụng Array Literal: là mảng trống. ([]) : doment : https://kipalog.com/posts/9-cach-tao-Array-JavaScript-voi-do-dai-va-gia-tri-cho-truoc
+                console.log([].slice.call(arguments));
+                // ép sang array sử dụng phương thức Array.from(arguments);
+                console.log(Array.from(arguments));
+                // ép sang array sử dụng Spread Operator(...)
+                
+                console.log([...arguments]);
+                //
+                
+                
+                
+            }// thì ta có var1, var2, other là 1 array, arguments là 1 object : giúp ta truy xuất các tham số có trong hàm
+            Rparam1(1,2, {a: 1, b: 2},"thien1");
+        // vậy: so sánh sự khác nhau giữa Rest parameter vs Arguments Object
+        /*
+        - Rest parameter là 1 array. còn argument là 1 object.
+        - Argument có thể lấy đc tất cả giá trị tham số. còn rest chỉ lấy array các giá trị ...other.
+        */
+        //ta có thể ép kiểu arguments sang array để dùng có function của array
+        
+    </script>
+</body>
+</html>
